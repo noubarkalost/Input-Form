@@ -103,12 +103,12 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "https://noubarkalost.github.io/Input-Form/",
-            "name": "Input-Form",
+            "name": "Form",
             "email": "noubar.kaloust@gmail.com"
       }
     }
     }
     }
   },
-  "defaultProject": "Input Form"
+  "defaultProject": "Form"
 }

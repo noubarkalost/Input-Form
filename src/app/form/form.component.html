@@ -1,0 +1,13 @@
+
+<form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+  <app-input [control]="$any(inputForm).controls['name']" inputType="text" label="Name"></app-input>
+  <app-input [control]="$any(inputForm).controls['lastName']" inputType="text" label="Last Name"></app-input>
+  <app-input [control]="$any(inputForm).controls['phoneNumber']" inputType="text" label="Phone Number"></app-input>
+  <app-input [control]="$any(inputForm).controls['email']" inputType="email" label="Email"></app-input>
+  <app-input [control]="$any(inputForm).controls['password']" inputType="password" label="Password"></app-input>
+  <app-input [control]="$any(inputForm).controls['confirmPassword']" inputType="password" label="Confirm Password"></app-input>
+
+  <button type="submit" [disabled]="!inputForm.valid">Submit</button>
+</form>
+
