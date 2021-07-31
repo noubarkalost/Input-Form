@@ -26,7 +26,9 @@ export const   Arr = new FormArray ([new FormGroup({
   email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z.-]+\\.[a-z]{2,4}$")]),
   password: new FormControl('', [Validators.required, Validators.pattern("^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$")]),
   confirmPassword: new FormControl('', Validators.required),
-}),new FormGroup({
+}
+),
+  new FormGroup({
   name: new FormControl('', [
     Validators.required,
     Validators.minLength(3)

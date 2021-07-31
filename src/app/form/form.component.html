@@ -1,8 +1,9 @@
 <button class="button button-container is-rounded is-primary " type="submit" (click)="addForm()">Add</button>
 
+
 <div class="container">
 <div class="card card-container" *ngFor="let control of arr.controls | slice : 0 : num; let i = index">
-
+  <button class="button button-container is-rounded is-primary " type="submit" (click)="password(i)">pass</button>
     <form class="card-content" [formGroup]="$any(control)" (ngSubmit)="onSubmit()">
       <div class="columns">
         <div class="column">
@@ -33,6 +34,9 @@
         <div class="column">
           <app-input [control]="$any(control).controls['confirmPassword']" inputType="password"
                      label="Confirm Password"></app-input>
+          <div *ngIf="password(i) ">
+            <p> passwords did not match</p>
+          </div>
         </div>
       </div>
 
