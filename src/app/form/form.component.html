@@ -16,28 +16,27 @@
       </div>
       <div class="columns">
         <div class="column">
-          <app-input [control]="$any(inputForm).controls['phoneNumber']" inputType="text"
-                     label="Phone Number"></app-input>
+          <app-input [control]="$any(control).controls['phoneNumber']" inputType="text" label="Phone Number"></app-input>
         </div>
       </div>
       <div class="columns">
         <div class="column">
-          <app-input [control]="$any(inputForm).controls['email']" inputType="email" label="Email"></app-input>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">,
-          <app-input [control]="$any(inputForm).controls['password']" inputType="password" label="Password"></app-input>
+          <app-input [control]="$any(control).controls['email']" inputType="email" label="Email"></app-input>
         </div>
       </div>
       <div class="columns">
         <div class="column">
-          <app-input [control]="$any(inputForm).controls['confirmPassword']" inputType="password"
+          <app-input [control]="$any(control).controls['password']" inputType="password" label="Password"></app-input>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <app-input [control]="$any(control).controls['confirmPassword']" inputType="password"
                      label="Confirm Password"></app-input>
         </div>
       </div>
 
-      <button class="button is-rounded is-primary " type="submit">Submit</button>
+      <button class="button is-rounded is-primary " type="submit" [disabled]="!control.valid">Submit</button>
     </form>
 
   </div>
