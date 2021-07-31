@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -8,7 +8,8 @@ import {FormBuilder, Validators} from "@angular/forms";
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  inputForm = this.formBuild.group({
+  arr = new FormArray([])
+  inputForm = new FormGroup({
     name: this.formBuild.control('', [
       Validators.required,
       Validators.minLength(3)]),
@@ -22,15 +23,31 @@ export class FormComponent implements OnInit {
 
   })
 
+
+
   constructor(private formBuild: FormBuilder) {
 
+  }
+
+  get name(){
+    return this.inputForm.get('name')
+  }
+
+  newName(opt={name:''}){
+    return this.formBuild.group({
+      name:[opt.name]
+    })
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  addForm(){
+      this.name!.patchValue(`${''}`)
+      this.arr.push(this.newName())
 
+}
+  onSubmit() {
 
   }
 }
