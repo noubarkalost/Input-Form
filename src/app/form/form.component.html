@@ -1,9 +1,9 @@
 <button class="button button-container is-rounded is-primary " type="submit" (click)="addForm()">Add</button>
-<div class="card-container">
 
-<div *ngFor="let control of arr.controls | slice : 0 : num; let i = index">
+<div class="container">
+<div class="card card-container" *ngFor="let control of arr.controls | slice : 0 : num; let i = index">
 
-    <form class="form-container " [formGroup]="$any(control)" (ngSubmit)="onSubmit()">
+    <form class="card-content" [formGroup]="$any(control)" (ngSubmit)="onSubmit()">
       <div class="columns">
         <div class="column">
           <app-input  [control]="$any(control).controls['name']" inputType="text" label="Name"></app-input>
@@ -41,7 +41,6 @@
     </form>
 
   </div>
-
-
 </div>
+
 
