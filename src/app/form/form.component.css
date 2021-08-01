@@ -16,6 +16,7 @@
   margin-bottom: 20px;
   margin-right: 10px;
   margin-left: 10px;
+  text-align: center;
 }
 .card-container:hover {
   transform: scaleX(1.02);

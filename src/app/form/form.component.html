@@ -1,12 +1,17 @@
-<button class="button button-container is-rounded is-primary " type="submit" (click)="addForm()">Add</button>
-
+<div class="button-container">
+<button class="button is-rounded is-primary " type="submit" (click)="addForm()">Add Form</button>
+<button class="button is-rounded is-link " type="submit" [disabled]="(password() || arr.invalid )" (click)="onSubmit()">Submit Form</button>
+</div>
 <div class="container">
-<div class="card card-container" *ngFor="let control of arr.controls | slice : 0 : num; let i = index">
-
+  <div class="card card-container" *ngFor="let control of arr.controls | slice : 0 : num; let i = index">
+           <div class="button-container">
+      <button class="delete is-large " type="submit" (click)="delete(i)">Delete</button>
+               </div>
+    <label class="menu-label"> <strong>Form</strong>  {{i +1}}</label>
     <form class="card-content" [formGroup]="$any(control)" (ngSubmit)="onSubmit()">
       <div class="columns">
         <div class="column">
-          <app-input  [control]="$any(control).controls['name']" inputType="text" label="Name"></app-input>
+          <app-input [control]="$any(control).controls['name']" inputType="text" label="Name"></app-input>
         </div>
       </div>
       <div class="columns">
@@ -16,7 +21,8 @@
       </div>
       <div class="columns">
         <div class="column">
-          <app-input [control]="$any(control).controls['phoneNumber']" inputType="text" label="Phone Number"></app-input>
+          <app-input [control]="$any(control).controls['phoneNumber']" inputType="text"
+                     label="Phone Number"></app-input>
         </div>
       </div>
       <div class="columns">
@@ -33,11 +39,12 @@
         <div class="column">
           <app-input [control]="$any(control).controls['confirmPassword']" inputType="password"
                      label="Confirm Password"></app-input>
+          <div *ngIf="$any(control).controls['confirmPassword'].value && password()">
+            <p class="help is-danger"> Passwords did not match </p>
+          </div>
         </div>
       </div>
-
-      <button class="button is-rounded is-primary " type="submit" [disabled]="!control.valid">Submit</button>
-    </form>
+          </form>
 
   </div>
 </div>
