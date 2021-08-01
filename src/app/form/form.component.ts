@@ -27,9 +27,8 @@ export class FormComponent implements OnInit {
 
 
   password() {
-    const password = this.arr.controls[this.currentForm].get('password')?.value
-    const confirmedPassword = this.arr.controls[this.currentForm].get('confirmPassword')?.value
-    console.log(password, confirmedPassword)
+    const password = this.arr.controls[this.currentForm]?.get('password')?.value
+    const confirmedPassword = this.arr.controls[this.currentForm]?.get('confirmPassword')?.value
     return password !== confirmedPassword;
   }
 
@@ -61,10 +60,12 @@ export class FormComponent implements OnInit {
   }
   delete(i: number){
     this.currentForm = i
-
+    if(i>0){
+      this.arr.removeAt(i)
+    }
   }
 
   onSubmit() {
-
+    console.log(this.arr.controls[this.currentForm].value)
   }
 }
