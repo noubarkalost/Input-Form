@@ -1,6 +1,7 @@
-<button class="button button-container is-rounded is-primary " type="submit" (click)="addForm()">Add</button>
-
-
+<div class="button-container">
+<button class="button is-rounded is-primary " type="submit" (click)="addForm()">Add Form</button>
+<button class="button is-rounded is-primary " type="submit" [disabled]="(password() || arr.invalid ) ">Submit Form</button>
+</div>
 <div class="container">
   <div class="card card-container" *ngFor="let control of arr.controls | slice : 0 : num; let i = index">
         <label class="menu-label"> <strong>Form</strong>  {{i +1}}</label>
@@ -35,14 +36,14 @@
         <div class="column">
           <app-input [control]="$any(control).controls['confirmPassword']" inputType="password"
                      label="Confirm Password"></app-input>
-          <div *ngIf="$any(control).controls['confirmPassword'].value && password(i)">
-            <p> passwords did not match</p>
+          <div *ngIf="$any(control).controls['confirmPassword'].value && password()">
+            <p class="has-text-danger"> Passwords did not match </p>
           </div>
         </div>
       </div>
       <div class="button-container">
-      <button class="button is-rounded is-danger " type="submit" (click)="password(i)">Delete</button>
-      <button class="button is-rounded is-primary " type="submit" [disabled]="!control.valid">Submit</button>
+      <button class="button is-rounded is-danger " type="submit" (click)="delete(i)">Delete</button>
+
       </div>
     </form>
 

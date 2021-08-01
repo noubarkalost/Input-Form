@@ -2,14 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 
 
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  num : number = 1
+  currentForm: number = 0
+  num: number = 1
   arr = new FormArray([new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -26,13 +26,11 @@ export class FormComponent implements OnInit {
   })])
 
 
-
-
-  password(i: number) {
-    const password = this.arr.controls[i].get('password')?.value
-    const  confirmedPassword  = this.arr.controls[i].get('confirmPassword')?.value
-    console.log(password,confirmedPassword)
-    return password !== confirmedPassword ;
+  password() {
+    const password = this.arr.controls[this.currentForm].get('password')?.value
+    const confirmedPassword = this.arr.controls[this.currentForm].get('confirmPassword')?.value
+    console.log(password, confirmedPassword)
+    return password !== confirmedPassword;
   }
 
   constructor() {
@@ -57,10 +55,12 @@ export class FormComponent implements OnInit {
       confirmPassword: new FormControl('', Validators.required),
     })
     this.num += 1
-    if(this.arr.length < 10){
+    if (this.arr.length < 10) {
       this.arr.push(form)
     }
-
+  }
+  delete(i: number){
+    this.currentForm = i
 
   }
 
